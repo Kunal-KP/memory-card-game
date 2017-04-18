@@ -8,7 +8,7 @@ module.exports = {
         port: 3000
     },
     devtool: 'cheap-module-eval-source-map',
-    entry: './dev/js/index.js',
+    entry: './dev/js/myIndex.js',
     module: {
         loaders: [
             {

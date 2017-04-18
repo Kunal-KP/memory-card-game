@@ -3,3 +3,23 @@ $primary: #006699;
 h2 {
 	color: $primary;
 }
+.cards {
+    margin: 30px 207px;
+
+}
+.card {
+    margin: 50px;
+    width: 150px;
+    height: 200px;
+    background-color: green;
+    float: left;
+    box-shadow: -10px 10px 10px #888888;
+    color: white;
+}
+.clearFloat {
+    clear: both;
+}
+
+.numAlign {
+    padding: 80px 60px;
+}
