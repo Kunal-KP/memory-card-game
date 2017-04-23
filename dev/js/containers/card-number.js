@@ -1,30 +1,48 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {getNumber} from '../actions/index';
+import {getNumber,randomize} from '../actions/index';
 
 class CardNum extends React.Component {
 
-    componentDidMount(){
+    componentWillMount(){
         console.log("Inside componentWillMount");
-        for(var j=0;j<8;j++){
-            {this.props.getNumber()}
+        var j = 1; var count = 0; var val = 1;
+        while(j<=8)
+        {
+            if(count==2){
+                count = 0;
+                val++;
+            }
+                {this.props.getNumber(val)}
+                j++;
+                count++;
         }
 
     }
-    render(){
-        var toRender=null;
-        for(var i=0;i<8;i++){
-            console.log("kkkkkkkkkkkk");
-            toRender+=<div className="card"><div className="numAlign">
-                                     <b>{this.props.num[i]}</b>
-                                 </div></div>
-        }
+    toRender(){
+            return this.props.num.map((ele) => {
+                return (
+                    <div className="card">
+                        <div className="numAlign">
+                            <b>{ele}</b>
+                        </div>
+                    </div>
+                );
+            });
+    }
 
+    render(){
         return(
         <div>
-            {toRender}
+            <div className="btn-align">
+                <input type="button" className="btn" value="Let's Play" onClick={() => this.props.randomize(this.props.num)}/>
+            </div>
+            <div className="clearFloat"></div>
+            {this.toRender()}
+            {this.props.num}
         </div>
         )
     }
@@ -32,7 +50,7 @@ class CardNum extends React.Component {
 
 function matchDispatchToProps(dispatch){
     console.log("bla bla")
-    return bindActionCreators({getNumber: getNumber},dispatch);
+    return bindActionCreators({getNumber: getNumber,randomize: randomize},dispatch);
 }
 
 function mapStateToProps(state){

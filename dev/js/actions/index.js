@@ -7,11 +7,19 @@ export const selectUser = (user) => {
     }
 };
 */
-export const getNumber = () => {
-    console.log("Inside action->index.js");
-    var val=(Math.round(Math.random()*10,1)%4)+1;
+export const getNumber = (val) => {
+    console.log("Inside action->index.js->getNumber");
+
     return  {
         type: 'SET_NUMBER',
         payload: val
+    }
+};
+
+export const randomize = (numList) => {
+    console.log("Inside action->index.js->randomize");
+    return  {
+        type: 'RANDOMIZE_ARRAY',
+        payload: numList
     }
 };

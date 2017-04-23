@@ -1,7 +1,7 @@
 $primary: #006699;
 
 h2 {
-	color: $primary;
+   color: $primary;
 }
 .cards {
     margin: 30px 207px;
@@ -22,4 +22,19 @@ h2 {
 
 .numAlign {
     padding: 80px 60px;
+}
+.btn-align {
+    float: right;
+}
+.btn {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    box-shadow: -5px 5px 5px #888888;
+    font-weight: bolder;
+
 }
