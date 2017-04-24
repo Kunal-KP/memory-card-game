@@ -25,13 +25,22 @@ class CardNum extends React.Component {
     toRender(){
             return this.props.num.map((ele) => {
                 return (
-                    <div className="card">
+                    <div className="card"  onClick={()=>this.rules(ele)}>
                         <div className="numAlign">
-                            <b>{ele}</b>
+                            {ele}
                         </div>
                     </div>
                 );
             });
+    }
+
+    rules(ele){
+        console.log("Element clicked is: "+ ele);
+        console.log(document.getElementsByClassName("numAlign")[0].innerHTML);
+        if(document.getElementsByClassName("numAlign")[0].innerHTML==document.getElementsByClassName("numAlign")[1].innerHTML){
+            console.log("true");
+        }
+        else console.log("false");
     }
 
     render(){
