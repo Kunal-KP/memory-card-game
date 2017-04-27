@@ -26,7 +26,7 @@ class CardNum extends React.Component {
             return this.props.num.map((ele) => {
                 return (
                     <div className="card"  onClick={()=>this.rules(ele)}>
-                        <div className="numAlign">
+                        <div className="numAlign hidden">
                             {ele}
                         </div>
                     </div>
@@ -36,11 +36,25 @@ class CardNum extends React.Component {
 
     rules(ele){
         console.log("Element clicked is: "+ ele);
-        console.log(document.getElementsByClassName("numAlign")[0].innerHTML);
-        if(document.getElementsByClassName("numAlign")[0].innerHTML==document.getElementsByClassName("numAlign")[1].innerHTML){
-            console.log("true");
+        //console.log(document.getElementsByClassName("numAlign")[0].innerHTML);
+        if(sessionStorage.lastClicked==0 || sessionStorage.lastClicked==undefined){
+            sessionStorage.lastClicked=ele;
+            document.getElementById("showNumber").innerHTML="You clicked: "+ele;
         }
-        else console.log("false");
+        else{
+            if(ele == sessionStorage.lastClicked){
+                for(var k=0;k<8;k++){
+                    if(ele==document.getElementsByClassName("numAlign")[k].innerHTML){
+                        document.getElementsByClassName("numAlign")[k].classList.remove("hidden");
+                        document.getElementById("showNumber").innerHTML="You clicked: "+ele;
+                    }
+                }
+            }
+            else{
+                document.getElementById("showNumber").innerHTML="You clicked: "+ele;
+                sessionStorage.lastClicked=0;
+            }
+        }
     }
 
     render(){
@@ -51,7 +65,9 @@ class CardNum extends React.Component {
             </div>
             <div className="clearFloat"></div>
             {this.toRender()}
-            {this.props.num}
+
+            <div className="clearFloat"></div>
+            <div className="showNum" id="showNumber"></div>
         </div>
         )
     }
