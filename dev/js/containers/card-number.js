@@ -49,6 +49,7 @@ class CardNum extends React.Component {
                         document.getElementById("showNumber").innerHTML="You clicked: "+ele;
                     }
                 }
+                sessionStorage.lastClicked=0;
             }
             else{
                 document.getElementById("showNumber").innerHTML="You clicked: "+ele;
